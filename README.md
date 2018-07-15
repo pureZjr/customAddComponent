@@ -1,8 +1,9 @@
 # # customaddcomponents
 
- A tool to create components based on custom templates.
- 
- 
+A tool to create components based on custom templates.
+
+## [npm address](https://www.npmjs.com/package/customaddcomponents)
+
 ## [Documentation](#documentation)
 
 <a name="documentation"></a>
@@ -16,6 +17,7 @@ npm install customaddcomponents
 ```
 
 #### add script in your package.json
+
 ```json
 "scripts": {
 
@@ -24,14 +26,14 @@ npm install customaddcomponents
 ```
 
 #### create a templateconfig.json & write
+
 ```json
- { "templatepath": "CustomTemplate", "componentPlacementPath": "src"}
+{ "templatepath": "CustomTemplate", "componentPlacementPath": "src" }
 ```
-- **templatepath**:  the placement of your template
+
+- **templatepath**: the placement of your template
 - **CustomAddcCmponents**: The root directory which you want to place your component
-<a name="examples"></a>
-
-
+  <a name="examples"></a>
 
 #### create two folders name `src` and `CustomTemplate`
 
@@ -48,13 +50,16 @@ npm run add
 ![image](https://wx-static.yidejia.com/gDAcwF4KcWJfvH8WszFbzGz7spJPmz1yQnliJizE:Vzvc_ttpApBxmDlg5qZWpqh-ICY=:eyJzY29wZSI6Ind4LW1hcmtldGluZy1tYW5hZ2VyIiwiZGVhZGxpbmUiOjE1MzEzNjQ4MzV9.png)
 
 ### About the to write your template
+
 ```
 ${template-name} -> component-name
 ${TemplateName}  -> componentName
 ```
 
 ### example
+
 `template.tsx.txt`
+
 ```
 import { Component } from 'react'
 
@@ -67,9 +72,10 @@ export default class ${TemplateName} extends Components {
     return <div className='${template-name}'>${TemplateName}</div>
   }
 }
-
 ```
+
 `your component file`
+
 ```
 import { Component } from 'react'
 
