@@ -1,4 +1,9 @@
-# # customaddcomponents
+<div style="margin: 20px 0;font-size:29px;">customaddcomponents</div>
+
+<div style="background:#fff;border-radius:5px;width:73px;overflow:hidden;height:20px;font-size:10px;line-height:20px;">
+    <div style="display:inline-block;background:#5d5d5d;color:#fff;float:left;padding:0 5px;">node</div>
+    <div style="display:inline-block;background:#4ac41e;padding:0 5px;color:#fff;">>7.6</div>
+</div>
 
 A tool to create components based on custom templates.
 
