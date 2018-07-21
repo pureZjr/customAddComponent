@@ -1,6 +1,6 @@
 {
   "name": "customaddcomponents",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "create components by your template",
   "main": "cli.js",
   "keywords": [
