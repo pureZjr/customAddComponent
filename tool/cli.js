@@ -1,15 +1,14 @@
 #!/usr/bin/env node
 const path = require('path')
-const handel = require('./handle')
-const start = require('./start')
-const inquirer = require('./inquirer')
+const create = require('./create')
+const prompts = require('./prompts')
 ;(async () => {
-  const data = await inquirer()
+  const data = await prompts()
   const args = {
     componentName: data.componentName,
-    componentFileName: data.componentFileName,
+    componentFilename: data.componentFilename,
     path: data.placementPath,
     templatePath: data.templatePath
   }
-  start(args)
+  create(args)
 })()

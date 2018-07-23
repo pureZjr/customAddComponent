@@ -1,11 +1,14 @@
 import { Component } from 'react'
 
-export default class ${TemplateName} extends Components {
+export default class ${ComponentName} extends Components {
   constructor(props) {
     super(props)
     this.state = {}
   }
   render() {
-    return <div className='${template-name}'>${TemplateName}</div>
+    return <div className='${component-name}'>
+        ${ComponentName}
+        <div className='${component-filename}'>${ComponentFilename}</div>
+    </div>
   }
 }

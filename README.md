@@ -57,8 +57,12 @@ npm run add
 ### About the to write your template
 
 ```
-${template-name} -> component-name
-${TemplateName}  -> componentName
+${component-name} -> component-name
+${componentName}  -> componentName
+${ComponentName}  -> ComponentName
+${component-filename} -> component-filename
+${componentFilename}  -> componentFilename
+${ComponentFilename}  -> ComponentFilename
 ```
 
 ### example
