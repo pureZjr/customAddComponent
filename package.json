@@ -10,7 +10,7 @@
     "test": "npm run add"
   },
   "bin": {
-    "add-component": "./tool/test.js"
+    "add-component": "./tool/cli.js"
   },
   "author": "zhangjunrao",
   "license": "ISC",
