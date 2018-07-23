@@ -26,7 +26,7 @@ npm install customaddcomponents
 ```json
 "scripts": {
 
-    "add": "node node_modules/customaddcomponents/tool/cli.js"
+    "add": "add-component",
 },
 ```
 
