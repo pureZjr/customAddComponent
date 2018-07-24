@@ -1,0 +1,4 @@
+Vue Template
+${ComponentName}
+${componentName}
+${component-name}

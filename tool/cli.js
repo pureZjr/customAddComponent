@@ -8,7 +8,8 @@ const prompts = require('./prompts')
     componentName: data.componentName,
     componentFilename: data.componentFilename,
     path: data.placementPath,
-    templatePath: data.templatePath
+    templatePath: data.templatePath,
+    templateIsFolder: data.componentFilename !== undefined
   }
   create(args)
 })()

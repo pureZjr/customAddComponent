@@ -64,22 +64,56 @@ module.exports = async function run() {
       type: 'input',
       name: 'componentFilename',
       message: 'please input the component‘s file’s name',
-      default: 'index'
+      default: 'index',
+      when: input => {
+        // if componentName has ’.‘ ，it will be considered this is a document
+        if (input.componentName.includes('.')) {
+          return false
+        } else {
+          return true
+        }
+      }
     }
   ]
-  // 3.
-  const template = await util.getFolderOrFiles(templatepath)
-  const templateChoice = [].concat(template)
-  if (!templateChoice.length) {
-    console.log(`${colors.red('please Create your templates')}`)
-    process.exit()
-  }
-  const selectTemplate = [
+  // 3.template is Folde
+  const templates = await util.getFolderOrFiles(templatepath, 'b')
+  const templateFoldeChoice = templates.filter(v => {
+    return !v.includes('.')
+  })
+  const selectTemplateFolder = [
     {
       type: 'list',
       name: 'template',
       message: 'please choose your template',
-      choices: templateChoice
+      choices: templateFoldeChoice,
+      when: input => {
+        if (!templateFoldeChoice.length) {
+          console.log(`${colors.red('please Create your templates')}`)
+          process.exit()
+        } else {
+          return !input.componentName.includes('.')
+        }
+      }
+    }
+  ]
+  // 3.template is file
+  const templateFileChoice = templates.filter(v => {
+    return v.includes('.')
+  })
+  const selectTemplateFile = [
+    {
+      type: 'list',
+      name: 'template',
+      message: 'please choose your template',
+      choices: templateFileChoice,
+      when: input => {
+        if (!templateFileChoice.length) {
+          console.log(`${colors.red('please Create your templates')}`)
+          process.exit()
+        } else {
+          return input.componentName.includes('.')
+        }
+      }
     }
   ]
   // 4.
@@ -104,7 +138,8 @@ module.exports = async function run() {
   const prompts = []
     .concat(inputComponentName)
     .concat(inputComponentFileName)
-    .concat(selectTemplate)
+    .concat(selectTemplateFolder)
+    .concat(selectTemplateFile)
     .concat(selectPlacementPath)
   return new Promise(async function(resolve, reject) {
     const answers = await inquirer.prompt(prompts)
@@ -140,7 +175,7 @@ function judgeOverridden() {
       {
         type: 'input',
         name: 'res',
-        message: 'Folder already exists, overridden?：y/n'
+        message: 'Folder or already exists, overridden?：y/n'
       }
     ])
     if (ans.res === 'y' || ans.res === '') {

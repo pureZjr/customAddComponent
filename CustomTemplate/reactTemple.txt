@@ -1,0 +1,4 @@
+React Template
+${ComponentName}
+${componentName}
+${component-name}
