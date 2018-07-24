@@ -56,9 +56,9 @@ module.exports = {
   /**
    * get folders
    * @param filePath
-   * @param folder boolean --default true
+   * @param folder string --default y y/n/b
    */
-  getFolderOrFiles: function(filePath, folder = true) {
+  getFolderOrFiles: function(filePath, folder = 'y') {
     return new Promise(function(resolve, reject) {
       return fs.readdir(path.resolve(filePath), 'utf8', (err, files) => {
         if (!files) {
@@ -67,10 +67,12 @@ module.exports = {
         }
         const f = files.filter(v => {
           const state = fs.statSync(path.resolve(`${filePath}/${v}`))
-          if (folder) {
+          if (folder === 'y') {
             return state.isDirectory()
-          } else {
+          } else if (folder === 'n') {
             return !state.isDirectory()
+          } else {
+            return true
           }
         })
         resolve(f)
@@ -81,6 +83,35 @@ module.exports = {
     return fs
       .readFileSync(`${path.resolve('.')}/templateconfig.json`)
       .toString()
+  },
+  /**
+   * @param componentName
+   * @param templatePath
+   * @param componentPath
+   */
+  createTemplateFile: function({ componentName, templatePath, componentPath }) {
+    // ${ComponentName} -> ComponentName
+    const ComponentName =
+      componentName.substring(0, 1).toUpperCase() + componentName.substring(1)
+
+    // ${component-name} -> component-name
+    let className = ''
+    for (let i = 0; i < componentName.length; i++) {
+      if (/[A-Z]/.test(componentName[i]) && !!i) {
+        className += '-'
+      }
+      className += componentName[i].toLowerCase()
+    }
+
+    const content = fs
+      .readFileSync(`${templatePath}`)
+      .toString()
+      .replace(/\${ComponentName}/g, ComponentName)
+      .replace(/\${componentName}/g, componentName)
+      .replace(/\${component-name}/g, className)
+    fs.writeFileSync(`${componentPath}`, content, 'utf8')
+    console.log(colors.green('write file: '))
+    console.log(colors.underline(`${componentPath}`))
   }
 }
 
@@ -133,7 +164,6 @@ function readAndWiteFile(
         className2 += componentFilename[i].toLowerCase()
       }
       // 1.create file
-      //fs.createWriteStream(`${componentPath}/${newComponentName}`)
       // 2.read & write template contents
       const content = fs
         .readFileSync(`${templateFolderPath}/${templateName}`)

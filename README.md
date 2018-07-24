@@ -1,10 +1,6 @@
-<div style="margin: 20px 0;font-size:29px;">customaddcomponents</div>
+# custom-add-component
 
-<div style="background:#fff;border-radius:5px;width:73px;overflow:hidden;height:20px;font-size:10px;line-height:20px;">
-    <div style="display:inline-block;background:#5d5d5d;color:#fff;float:left;padding:0 5px;">node</div>
-    <div style="display:inline-block;background:#4ac41e;padding:0 5px;color:#fff;">>7.6</div>
-</div>
-
+![npm](https://wx-static.yidejia.com/gDAcwF4KcWJfvH8WszFbzGz7spJPmz1yQnliJizE:_kpsBEItUoad1mz1jsfgGFfhD4s=:eyJzY29wZSI6Ind4LW1hcmtldGluZy1tYW5hZ2VyIiwiZGVhZGxpbmUiOjE1MzI0ODM3Mzh9.png?imageView/2/w/600)
 A tool to create components based on custom templates.
 
 ## [npm address](https://www.npmjs.com/package/customaddcomponents)
@@ -52,7 +48,13 @@ npm install customaddcomponents
 npm run add
 ```
 
-![image](https://wx-static.yidejia.com/gDAcwF4KcWJfvH8WszFbzGz7spJPmz1yQnliJizE:Vzvc_ttpApBxmDlg5qZWpqh-ICY=:eyJzY29wZSI6Ind4LW1hcmtldGluZy1tYW5hZ2VyIiwiZGVhZGxpbmUiOjE1MzEzNjQ4MzV9.png)
+- template is folder
+
+![gif](https://wx-static.yidejia.com/gDAcwF4KcWJfvH8WszFbzGz7spJPmz1yQnliJizE:70Q9iHKRN1jIMNK_0WxjRChko_I=:eyJzY29wZSI6Ind4LW1hcmtldGluZy1tYW5hZ2VyIiwiZGVhZGxpbmUiOjE1MzI0ODQwNDN9.gif?imageView/2/w/600)
+
+- template is file
+
+![gif](https://wx-static.yidejia.com/gDAcwF4KcWJfvH8WszFbzGz7spJPmz1yQnliJizE:efD001glJXgrZF4lQSnt_syLA8U=:eyJzY29wZSI6Ind4LW1hcmtldGluZy1tYW5hZ2VyIiwiZGVhZGxpbmUiOjE1MzI0ODQwNjh9.gif?imageView/2/w/600)
 
 ### About the to write your template
 
