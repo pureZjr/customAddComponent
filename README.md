@@ -1,9 +1,14 @@
 # customaddcomponents
 
 ![npm](https://wx-static.yidejia.com/gDAcwF4KcWJfvH8WszFbzGz7spJPmz1yQnliJizE:_kpsBEItUoad1mz1jsfgGFfhD4s=:eyJzY29wZSI6Ind4LW1hcmtldGluZy1tYW5hZ2VyIiwiZGVhZGxpbmUiOjE1MzI0ODM3Mzh9.png?imageView/2/w/600)
+
+---
+
 A tool to create components based on custom templates.
 
 ## [npm address](https://www.npmjs.com/package/customaddcomponents)
+
+## [github address](https://github.com/pureZjr/customAddComponent)
 
 ## [Documentation](#documentation)
 
