@@ -88,11 +88,12 @@ module.exports = async function run() {
       message: 'please choose your template',
       choices: templateFoldeChoice,
       when: input => {
-        if (!templateFoldeChoice.length) {
+        const isFolder = !input.componentName.includes('.')
+        if (!templateFoldeChoice.length && isFolder) {
           console.log(`${colors.red('please Create your templates')}`)
           process.exit()
         } else {
-          return !input.componentName.includes('.')
+          return isFolder
         }
       }
     }
@@ -108,11 +109,12 @@ module.exports = async function run() {
       message: 'please choose your template',
       choices: templateFileChoice,
       when: input => {
-        if (!templateFileChoice.length) {
+        const isFile = input.componentName.includes('.')
+        if (!templateFileChoice.length && isFile) {
           console.log(`${colors.red('please Create your templates')}`)
           process.exit()
         } else {
-          return input.componentName.includes('.')
+          return isFile
         }
       }
     }
@@ -198,7 +200,7 @@ function deleteFolderOrFile(p) {
         var curPath = p + '/' + file
         if (fs.statSync(curPath).isDirectory()) {
           // recurse
-          deleteFolder(curPath)
+          deleteFolderOrFile(curPath)
         } else {
           // delete file
           fs.unlinkSync(curPath)
