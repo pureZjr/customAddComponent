@@ -61,8 +61,7 @@ write common code.**
 
 This util can help you to do this thing more easily. **For Example**
 
-![此处输入图片的描述][1]
-[1]: https://note.ss.purevivi.chat/5e50d0d451de70ec0445b6539a27a874.gif
+![image](https://note.ss.purevivi.chat/5e50d0d451de70ec0445b6539a27a874.gif)
 
 ## Setting
 
