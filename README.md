@@ -1,67 +1,128 @@
 # customaddcomponents
 
-![npm](https://wx-static.yidejia.com/gDAcwF4KcWJfvH8WszFbzGz7spJPmz1yQnliJizE:_kpsBEItUoad1mz1jsfgGFfhD4s=:eyJzY29wZSI6Ind4LW1hcmtldGluZy1tYW5hZ2VyIiwiZGVhZGxpbmUiOjE1MzI0ODM3Mzh9.png?imageView/2/w/600)
+_Easy, create your custom component._
 
 ---
 
-A tool to create components based on custom templates.
+## Introduction
 
-## [npm address](https://www.npmjs.com/package/customaddcomponents)
+_Any components that can be created from the custom template, should be. Automatically._
 
-## [github address](https://github.com/pureZjr/customAddComponent)
+customaddcomponents is a tool that help you to created components not restricted to React、Vue，it is base on the template
+that you make it.
 
-## [Documentation](#documentation)
+## Installation
 
-<a name="documentation"></a>
+You can install it using yarn or npm, whatever you prefer.
 
-### Installation
-
-<a name="installation"></a>
-
-```shell
+```
+yarn add customaddcomponents
 npm install customaddcomponents
 ```
 
-#### add script in your package.json
+## Scene
+
+I want to create a React component call **Avatar**
+
+- Firstly - create folder and files
+
+  1. create folder **Avatar**
+  2. create **index.tsx**、**index.scss**
+
+- Secondly - write common code
+
+  ```js
+    // index.tsx
+    import * as React from 'react'
+
+    import styles from './index.scss'
+
+    interface Props{}
+
+    function Avatar: React.FC = ({}:Pops) => {
+        return <div className={styles.container}>Avatar</div>
+    }
+    export default Avatar
+  ```
+
+  ```css
+  // index.scss
+  @import "base.scss";
+
+  .container {
+    background: #fff;
+  }
+  ```
+
+So let's now summarize the example. two things, **create folder、files and
+write common code.**
+
+## Show
+
+This util can help you to do this thing more easily. **For Example**
+
+![此处输入图片的描述][1]
+[1]: https://note.ss.purevivi.chat/5e50d0d451de70ec0445b6539a27a874.gif
+
+## Setting
+
+- Firstly - create **templateconfig.json** in the root dir
 
 ```json
-"scripts": {
+// templateconfig.json
 
+{
+  "templatepath": "./src/utils/CustomTemplate",
+  "componentPlacementPath": "src"
+}
+```
+
+- Secondly - create template file base on **templatepath**
+
+```js
+// ./src/utils/CustomTemplate/FunctionComponent/TemplateName.scss.txt
+
+@import 'base.scss';
+
+.container{
+    background:#fff;
+}
+
+```
+
+```js
+// ./src/utils/CustomTemplate/FunctionComponent/TemplateName.tsx.txt
+
+import * as React from 'react'
+
+import styles from './index.scss'
+
+interface Props {}
+
+const ${ComponentName}: React.FC = (props: Props) => {
+    return <div className={styles.container}>${ComponentName}</div>
+}
+
+export default ${ComponentName}
+
+```
+
+- Lastly - add script
+
+```js
+// package.json
+
+ "scripts": {
+    ...
     "add": "add-component",
-},
+    ...
+ }
+
 ```
 
-#### create a templateconfig.json & write
+## PS
 
-```json
-{ "templatepath": "CustomTemplate", "componentPlacementPath": "src" }
-```
-
-- **templatepath**: the placement of your template
-- **CustomAddcCmponents**: The root directory which you want to place your component
-  <a name="examples"></a>
-
-#### create two folders name `src` and `CustomTemplate`
-
-#### create templates into the CustomTemplate folder like
-
-![image](https://wx-static.yidejia.com/gDAcwF4KcWJfvH8WszFbzGz7spJPmz1yQnliJizE:foowUQgADv1gm7X3jtA3SPRONVE=:eyJzY29wZSI6Ind4LW1hcmtldGluZy1tYW5hZ2VyIiwiZGVhZGxpbmUiOjE1MzEzNjM5MTh9.png)
-
-### Examples (Run it and see it)
-
-```shell
-npm run add
-```
-
-- template is folder
-
-![gif](https://wx-static.yidejia.com/gDAcwF4KcWJfvH8WszFbzGz7spJPmz1yQnliJizE:70Q9iHKRN1jIMNK_0WxjRChko_I=:eyJzY29wZSI6Ind4LW1hcmtldGluZy1tYW5hZ2VyIiwiZGVhZGxpbmUiOjE1MzI0ODQwNDN9.gif?imageView/2/w/600)
-
-- template is file
-
-![gif](https://wx-static.yidejia.com/gDAcwF4KcWJfvH8WszFbzGz7spJPmz1yQnliJizE:efD001glJXgrZF4lQSnt_syLA8U=:eyJzY29wZSI6Ind4LW1hcmtldGluZy1tYW5hZ2VyIiwiZGVhZGxpbmUiOjE1MzI0ODQwNjh9.gif?imageView/2/w/600)
-
-### About the to write your template
+- you can write this var in the template
 
 ```
 ${component-name} -> component-name
@@ -70,38 +131,5 @@ ${ComponentName}  -> ComponentName
 ${component-filename} -> component-filename
 ${componentFilename}  -> componentFilename
 ${ComponentFilename}  -> ComponentFilename
-```
 
-### example
-
-`template.tsx.txt`
-
-```
-import { Component } from 'react'
-
-export default class ${TemplateName} extends Components {
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
-  render() {
-    return <div className='${template-name}'>${TemplateName}</div>
-  }
-}
-```
-
-`your component file`
-
-```
-import { Component } from 'react'
-
-export default class YourComponent extends Components {
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
-  render() {
-    return <div className='your-component'>YourComponent</div>
-  }
-}
 ```
